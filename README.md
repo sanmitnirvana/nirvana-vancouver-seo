@@ -1,21 +1,19 @@
-# Nirvana Canada — Vancouver SEO Landing Page
+# Nirvana Canada — Vancouver SEO landing page
 
-Next.js App Router project designed for GitHub → Vercel deployment. Navy, blue and white branding, verified-source client case-study metrics, internal links, FAQs, conversion form and JSON-LD.
+A responsive, single-page, Vercel-ready site with semantic HTML, accessible FAQs, case studies, internal links, SEO metadata, JSON-LD, mobile navigation, and a contact endpoint.
 
 ## Deploy
-1. Import this GitHub repository in Vercel with Framework Preset **Next.js**.
-2. Under Project Settings → Environment Variables, set `RESEND_API_KEY`, `LEAD_FROM_EMAIL` (verified sender) and `LEAD_TO_EMAIL` (recipient).
-3. Deploy. The form reports an error until the delivery service is configured; no leads are silently discarded.
-4. Run `npm install` and `npm run dev` for local development.
+1. Upload the files to a GitHub repository (the `index.html`, `api` folder and `vercel.json` must be at the repository root).
+2. In Vercel, import the repository and select **Other** as the framework preset. No build command is required. Output directory can remain the project root.
+3. Configure environment variables: `RESEND_API_KEY`, `CONTACT_TO_EMAIL` (e.g. `success@nirvanacanada.com`) and `CONTACT_FROM_EMAIL` (an address from a domain verified with Resend). Redeploy.
+4. Test the contact form and ensure the emails arrive. Without those variables the form correctly reports that it cannot send; it does not pretend to submit.
+5. Verify all case-study metrics and measurement periods, office details, internal URLs, and marketing claims before publishing.
+6. Replace the text-based wordmark with the approved brand logo if desired.
 
-**Important:** This standalone preview deliberately uses `noindex` in metadata and `robots.js` to prevent keyword cannibalization with the existing live Vancouver SEO page. When migrated to the existing URL on nirvanacanada.com, change robots to allow indexing and preserve the canonical there. Do not publish two indexable versions.
-
-## Before launching
-- Confirm reporting dates, permission and attribution for Vortex Restaurant Equipment and Hari Stones case studies.
-- Confirm services, pricing and SEO-assessment scope with the Nirvana team.
-- Add GA4/CRM conversion measurement after the form is connected.
-- Replace the lightweight branded wordmark with the approved original PNG as needed; avoid altering the brand.
-- Review Web Vitals, structured-data validation and accessibility.
-
-## Links
-Internal links point back to real sections at https://www.nirvanacanada.com/ including digital marketing, buyer guides, case studies, conversion optimization, FAQ, testimonials, and contact page.
+## SEO and production notes
+- The canonical URL points to the **existing** Vancouver SEO service page. A Vercel preview is for design review, not a separate competing indexable page. If hosting permanently elsewhere, adjust canonical and redirect strategy.
+- The FAQ content uses native HTML `details` and `summary` for accessibility; do not assume Google FAQ rich results.
+- Organization, Service and BreadcrumbList structured data is included. Add accurate LocalBusiness address/hours only after verifying details.
+- The contact form uses Resend via a Vercel function. Configure domain authentication and add spam/rate-limiting protections for production use.
+- The illustrative dashboard is explicitly labeled as example data.
+- Verify privacy/consent wording with your published privacy policy before launch.
